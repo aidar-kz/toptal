@@ -1,0 +1,6 @@
+// require('./demo-test')
+// require('./test')
+// require('./LongestPassword')
+// require('./task-1')
+require('./task-2')
+// require('./task-3')
