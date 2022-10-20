@@ -16,23 +16,12 @@
 // * If the download is done, return 0
 // * If you are unable to produce an estimate, return -1.
 function timeRemaining(X, B, Z) {
-  const bytesLastTwoMin = B.slice(B.length - Z, B.length).reduce(
-    (a, b) => a + b,
-    0
-  );
+  const bytesLastTwoMin = B.slice(B.length - Z, B.length).reduce((a, b) => a + b, 0);
   const averageOfLastTwoMin = bytesLastTwoMin / Z;
   const bytesRemaining = X - B.reduce((a, b) => a + b, 0);
 
-  // If the download is done, return 0
-  if (bytesRemaining <= 0) {
-    return 0;
-  }
-
-  // If you are unable to produce an estimate, return -1.
-  if (averageOfLastTwoMin <= 0) {
-    return -1;
-  }
-
+  if (bytesRemaining <= 0) return 0; // If the download is done, return 0
+  if (averageOfLastTwoMin <= 0) return -1; // If you are unable to produce an estimate, return -1.
   return Math.ceil(bytesRemaining / averageOfLastTwoMin);
 }
 
